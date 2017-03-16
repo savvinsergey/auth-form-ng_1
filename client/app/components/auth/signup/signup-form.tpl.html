@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h1 class="text-muted">SIGN UP</h1>
+
+        <div class="alert alert-success" role="alert" ng-show="suVm.status == 'OK'">SIGN UP status => OK</div>
+        <div class="alert alert-danger" role="alert" ng-show="suVm.status == 'ERROR'">SIGN UP status => ERROR</div>
+
+        <form name="suVm.SignUpForm" role="form" novalidate
+              ng-submit="suVm.signUp()">
+            <div class="form-group"
+                 ng-class="{'has-error' : suVm.SignUpForm.username.$invalid && suVm.SignUpForm.$submitted}">
+                <label for="signup-username">Username</label>
+                <input type="text" class="form-control input-lg" name="username" id="signup-username" placeholder="Username"
+                       ng-model="suVm.username"
+                       required>
+                <small class="help-block no-paddings text-error"
+                       ng-show="suVm.SignUpForm.username.$error.required && suVm.SignUpForm.$submitted">
+                    Username is required field
+                </small>
+            </div>
+            <div class="form-group"
+                 ng-class="{'has-error' : suVm.SignUpForm.phone.$invalid && suVm.SignUpForm.$submitted}">
+                <label for="signup-phone">Username</label>
+                <input type="text" class="form-control input-lg" name="phone" id="signup-phone" placeholder="Phone"
+                       ng-model="suVm.phone"
+                       required>
+                <small class="help-block no-paddings text-error"
+                       ng-show="suVm.SignUpForm.phone.$error.required && suVm.SignUpForm.$submitted">
+                    Phone is required field
+                </small>
+            </div>
+            <div class="form-group"
+                 ng-class="{'has-error' : suVm.SignUpForm.login.$invalid && suVm.SignUpForm.$submitted}">
+                <label for="signup-login">Login</label>
+                <input type="email" class="form-control input-lg" name="login" id="signup-login" placeholder="Login"
+                       ng-model="suVm.login"
+                       required>
+                <small class="help-block no-paddings text-error"
+                       ng-show="suVm.SignUpForm.login.$error.required && suVm.SignUpForm.$submitted">
+                    Login is required field
+                </small>
+                <small class="help-block no-paddings text-error"
+                       ng-show="suVm.SignUpForm.login.$error.email && suVm.SignUpForm.$submitted">
+                    No valid email
+                </small>
+            </div>
+            <div class="form-group"
+                 ng-class="{'has-error' : suVm.SignUpForm.password.$invalid && suVm.SignUpForm.$submitted}">
+                <label for="signup-password">Password</label>
+                <input type="password" class="form-control input-lg" name="password" id="signup-password" placeholder="Password"
+                       ng-model="suVm.password"
+                       required ng-minlength="6">
+                <small class="help-block no-paddings text-error"
+                       ng-show="suVm.SignUpForm.password.$error.required && suVm.SignUpForm.$submitted">
+                    Password is required field
+                </small>
+                <small class="help-block no-paddings text-error"
+                       ng-show="suVm.SignUpForm.password.$error.minlength && suVm.SignUpForm.$submitted">
+                    Password must be minimum length 6 chars
+                </small>
+            </div>
+            <button type="submit" class="btn btn-default btn-lg pull-right" ng-disabled="suVm.loading">Sign up</button>
+        </form>
+    </div>
+</div>
+
